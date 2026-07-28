@@ -17,3 +17,4 @@ tocfl_bank/
 # IDE / build artifacts
 .vs/
 .wrangler/
+.claude
