@@ -3,3 +3,17 @@ __pycache__/
 desktop.ini
 .DS_Store
 neocities-backup/
+
+# 版權素材（不推上 GitHub）
+*.pdf
+*.pptx
+*.ppt
+playwright-state/
+gemini-downloads/
+
+# TOCFL 官方素材庫（6.7GB+，含版權 PDF/MP3/RAR，絕不可推上 GitHub）
+tocfl_bank/
+
+# IDE / build artifacts
+.vs/
+.wrangler/

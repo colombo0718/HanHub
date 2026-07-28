@@ -17,6 +17,8 @@
 
 ## Sentence Summoner 造句對戰
 
+> ✅ 2026-07-26：已上線 [strategy-space.leaflune.org/SentenceSummoner/vi_zh-hans/](https://strategy-space.leaflune.org/SentenceSummoner/vi_zh-hans/)，走 StrategySpace（SS）平台而非本地 `Card/` 原型。以下項目是本地舊規格書（`notes/漢語單詞遊戲卡造句對戰系統 v1.0.md`）的任務，跟實際上線版本是否一致尚未核對，暫不刪除、待確認後再清理。
+
 - [ ] 名詞卡數值設計（HP/ATK/DEF/SPD，依 HSK 等級調整）
 - [ ] 動詞卡、形容詞卡、副詞卡數值設計
 - [ ] 陷阱卡句型條件清單
@@ -39,20 +41,23 @@
 
 ## 宣學習官網
 
-- [ ] 建立 GitHub repo，串接 Cloudflare Pages 自動部署
-- [ ] 規劃頁面結構（首頁 / 課程 / 周邊產品 / 關於）
-- [ ] 設計稿：色系、字型、Logo 使用規範（基於 xuanxuexi_emoji.png）
-- [ ] 實作首頁 HTML/CSS（Hero、品牌介紹、課程預覽區）
+- [x] 建立 GitHub repo，串接 Cloudflare Pages 自動部署 — `xuanxuexi.leaflune.org`
+- [x] 規劃頁面結構（首頁 / 課程 / 周邊產品 / 關於）
+- [x] 實作首頁 HTML/CSS（Hero、品牌介紹、課程預覽區、三支柱、products grid）
+- [x] 越南文版首頁（`/vi`）— 2026-07-26 上線，字體修正（Be Vietnam Pro）已套用
+- [x] TOCFL C1 模擬試題頁（`/vi/c1-mock-exam.html`）— 自製 5 段 30 題、非官方真題
 - [ ] 建立 `courses.js` 課程資料檔，頁面從資料自動渲染卡片
-  > 未來新增課程只改資料，不動 HTML
+  > 目前 `levels`/`products` 是內嵌在 HTML `<script>` 裡的 JS 陣列、非獨立資料檔；未來新增課程只改資料，不動 HTML
 - [ ] 建立 `products.js` 周邊產品資料檔（同上原則）
-- [ ] 課程列表頁：從 `courses.js` 自動生成課程卡片
 - [ ] 周邊產品頁：連結至 Gumroad 各商品
-- [ ] RWD（手機版）調整
+- [ ] RWD（手機版）調整 — 尚未實測手機瀏覽器
 - [ ] 建立第一個示範單元（HSK1，旅遊情境）
   > 待官網骨架完成後
 - [ ] 設計點數回饋機制原型
   > 擱置，待課程平台需求明確後再做
+- [ ] 英文版首頁補上 Sentence Summoner 連結（目前只有 `/vi` 版有接上 strategy-space 連結，英文版 `index.html` 尚未同步）
+- [ ] 評量測驗 / 應考輔助功能規劃
+  > 2026-07-26 colombo 明確定位 XX 為「教材→評量→應考輔助」一條龍平台，終局銜接學校/企業；目前只有 C1 模擬試題一項零星產出，尚無系統性評量/應考輔助規劃，需要新一輪課綱討論落實
 
 ---
 

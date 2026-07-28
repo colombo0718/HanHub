@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đề thi thử TOCFL C1 (Band C) — Đọc hiểu | XuanXuexi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1565C0;
+      --blue-light: #1976D2;
+      --blue-pale:  #E3F2FD;
+      --cream:      #FFF8EE;
+      --gold:       #F9A825;
+      --green:      #2E7D32;
+      --green-pale: #E8F5E9;
+      --text:       #1A1A2E;
+      --text-sub:   #555;
+      --border:     #E0E0E0;
+      --white:      #FFFFFF;
+      --radius:     12px;
+      --shadow:     0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", "Noto Sans", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: var(--blue); }
+    .nav-logo img { width: 36px; height: 36px; }
+    .nav-back { font-size: 0.9rem; font-weight: 600; color: var(--blue); }
+
+    .header {
+      padding: 56px 0 40px;
+      background: linear-gradient(135deg, #EEF6FF 0%, var(--cream) 100%);
+      text-align: center;
+    }
+    .header .badge {
+      display: inline-block;
+      background: var(--blue-pale); color: var(--blue);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 999px; margin-bottom: 16px;
+    }
+    .header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; margin-bottom: 14px; }
+    .header p { color: var(--text-sub); max-width: 600px; margin: 0 auto; font-size: 1rem; }
+    .header .source-note {
+      margin-top: 18px; font-size: 0.82rem; color: var(--text-sub);
+      background: var(--white); display: inline-block; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border);
+    }
+
+    .toc {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px;
+    }
+    .toc a {
+      font-size: 0.85rem; font-weight: 600; color: var(--blue);
+      background: var(--white); border: 1px solid var(--blue-pale);
+      padding: 6px 14px; border-radius: 999px;
+    }
+    .toc a:hover { background: var(--blue-pale); }
+
+    .section { padding: 48px 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    .passage-box {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      font-size: 1.08rem;
+      line-height: 2.1;
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+    .passage-box .blank {
+      display: inline-block;
+      min-width: 26px;
+      text-align: center;
+      font-weight: 800;
+      color: var(--blue);
+      border-bottom: 2px solid var(--blue);
+      margin: 0 2px;
+    }
+
+    .part-title {
+      font-size: 1.2rem; font-weight: 800; margin-bottom: 6px;
+    }
+    .part-sub { color: var(--text-sub); font-size: 0.92rem; margin-bottom: 20px; }
+
+    .q-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .q-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+    .q-card .q-num { font-weight: 800; color: var(--blue); margin-bottom: 8px; font-size: 0.95rem; }
+    .q-card .opt { font-size: 0.95rem; padding: 3px 0; color: var(--text); }
+    .q-card .opt.correct { color: var(--green); font-weight: 700; }
+    .q-card .opt .letter { display: inline-block; width: 22px; font-weight: 700; color: var(--text-sub); }
+    .q-card .opt.correct .letter { color: var(--green); }
+    .q-card .explain {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+    .q-card.revealed .explain { display: block; }
+    .q-card.revealed .opt.correct::after { content: " ✓"; }
+
+    .btn-toggle {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-toggle:hover { background: var(--blue-light); }
+    .btn-toggle.is-open { background: var(--green); }
+    .btn-toggle.is-open:hover { background: #1B5E20; }
+
+    .cta-footer {
+      text-align: center;
+      padding: 56px 0 72px;
+      background: var(--blue-pale);
+    }
+    .cta-footer h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+    .cta-footer p { color: var(--text-sub); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--blue); color: var(--white);
+      padding: 14px 32px; border-radius: 999px; font-weight: 700; font-size: 1rem;
+      transition: background .2s;
+    }
+    .btn-primary:hover { background: var(--blue-light); }
+
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.65);
+      padding: 32px 0;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    footer a { color: rgba(255,255,255,0.75); }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 680px) {
+      .passage-box { padding: 20px 18px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="../Card/xuanxuexi_emoji.png" alt="XuanXuexi Logo" />
+      XuanXuexi
+    </a>
+    <a href="index.html" class="nav-back">← Về trang chủ</a>
+  </div>
+</nav>
+
+<section class="header">
+  <div class="container">
+    <div class="badge">Mô phỏng TOCFL Band C · Tương đương C1</div>
+    <h1>Đề thi thử Đọc hiểu — Cấp độ C1</h1>
+    <p>5 đoạn văn điền từ (克漏字), 30 câu hỏi, do XuanXuexi tự biên soạn — mô phỏng độ khó và logic ra đề của cấp Band C: liên từ chuyển ý, phân biệt từ gần nghĩa, từ vựng văn viết trang trọng.</p>
+    <div class="source-note">✍️ Đề tự biên soạn theo phong cách TOCFL Band C — không phải đề thi chính thức</div>
+    <div class="toc">
+      <a href="#p1">Đoạn 1 · Nghề đan tre</a>
+      <a href="#p2">Đoạn 2 · Chim di cư</a>
+      <a href="#p3">Đoạn 3 · Thư gửi con</a>
+      <a href="#p4">Đoạn 4 · AI dịch thuật</a>
+      <a href="#p5">Đoạn 5 · Cửa hàng tiện lợi</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="p1">
+  <div class="container">
+    <div class="part-title">Đoạn 1 · Người thợ đan tre và nghề truyền thống</div>
+    <p class="part-sub">Đọc đoạn văn và chọn từ phù hợp nhất cho mỗi chỗ trống 1–6.</p>
+
+    <div class="passage-box">
+      王師傅做竹編已經四十多年，年輕時憑著一雙巧手在市場上闖出名號，如今卻眼看著這門手藝逐漸<span class="blank">1</span>。
+      並非沒有人想學，而是願意<span class="blank">2</span>好幾年才能出師的年輕人越來越少。「以前學徒要蹲上三年才能碰竹刀，」
+      王師傅說，「<span class="blank">3</span>現在，誰還等得了那麼久？」儘管如此，他仍不<span class="blank">4</span>把畢生所學鎖進工作室的
+      抽屜裡，反而在社區大學開課，把複雜的技法拆解成容易入門的步驟，<span class="blank">5</span>降低了學習門檻。他說，
+      手藝失傳不可怕，可怕的是沒人<span class="blank">6</span>去嘗試把它留下來。
+    </div>
+
+    <div class="q-grid" id="grid1"></div>
+
+    <button class="btn-toggle" data-target="grid1">Xem đáp án & giải thích</button>
+  </div>
+</section>
+
+<section class="section" id="p2">
+  <div class="container">
+    <div class="part-title">Đoạn 2 · Ô nhiễm ánh sáng và chim di cư</div>
+    <p class="part-sub">Đọc đoạn văn và chọn từ phù hợp nhất cho mỗi chỗ trống 7–12.</p>
+
+    <div class="passage-box">
+      每年秋天，數以萬計的候鳥沿著固定路線南飛，原本仰賴星光與月光辨認方向，如今卻常常被城市的燈火<span class="blank">7</span>，
+      一頭撞上高樓的玻璃帷幕。研究人員發現，光害不僅<span class="blank">8</span>候鳥的導航能力，也讓牠們消耗更多體力在原地
+      盤旋，<span class="blank">9</span>錯過了南遷的最佳時機。為了減少傷害，部分城市已經開始推動「熄燈護鳥」行動，
+      <span class="blank">10</span>在候鳥遷徙的尖峰期間，將部分大樓的照明<span class="blank">11</span>到最低。這樣的措施乍看之下犧牲了
+      夜間的城市景觀，<span class="blank">12</span>換來的卻是數以千計候鳥的生命。
+    </div>
+
+    <div class="q-grid" id="grid2"></div>
+
+    <button class="btn-toggle" data-target="grid2">Xem đáp án & giải thích</button>
+  </div>
+</section>
+
+<section class="section" id="p3">
+  <div class="container">
+    <div class="part-title">Đoạn 3 · Thư mẹ gửi con đang du học</div>
+    <p class="part-sub">Đọc đoạn văn và chọn từ phù hợp nhất cho mỗi chỗ trống 13–18.</p>
+
+    <div class="passage-box">
+      你出國讀書已經滿三個月了，起初我每天都惦記著你適不適應，<span class="blank">13</span>後來看你信裡的口氣一天比一天
+      輕鬆，才漸漸放下心來。你提到宿舍的室友個性隨和，兩人相處<span class="blank">14</span>融洽，這點我很欣慰。倒是你信末
+      <span class="blank">15</span>提了一句「錢有點緊」，想必是不好意思明講，其實你不必顧慮太多，家裡的狀況還
+      <span class="blank">16</span>，你安心把書讀好比什麼都重要。天氣轉涼了，別再<span class="blank">17</span>熬夜，身體是自己的，
+      累壞了誰都幫不上忙。信就寫到這裡，盼你早日<span class="blank">18</span>，隨時打電話回家。
+    </div>
+
+    <div class="q-grid" id="grid3"></div>
+
+    <button class="btn-toggle" data-target="grid3">Xem đáp án & giải thích</button>
+  </div>
+</section>
+
+<section class="section" id="p4">
+  <div class="container">
+    <div class="part-title">Đoạn 4 · AI dịch thuật và vai trò của người phiên dịch</div>
+    <p class="part-sub">Đọc đoạn văn và chọn từ phù hợp nhất cho mỗi chỗ trống 19–24.</p>
+
+    <div class="passage-box">
+      隨著人工智慧翻譯的準確度<span class="blank">19</span>提升,不少人開始擔心譯者這個行業會就此<span class="blank">20</span>。
+      然而實際走進翻譯業界卻會發現,情況<span class="blank">21</span>外界想像的那樣悲觀。機器翻譯確實能在幾秒內產出
+      <span class="blank">22</span>堪用的初稿,但遇到雙關語、文化背景濃厚的段落,仍然<span class="blank">23</span>經驗豐富的譯者
+      出手調整,才能讓文字讀起來像人話,而不是生硬的翻譯腔。換句話說,譯者的角色與其說是被取代,
+      <span class="blank">24</span>說是從「從零開始翻譯」轉型成「校對與潤飾機器產出的初稿」。
+    </div>
+
+    <div class="q-grid" id="grid4"></div>
+
+    <button class="btn-toggle" data-target="grid4">Xem đáp án & giải thích</button>
+  </div>
+</section>
+
+<section class="section" id="p5">
+  <div class="container">
+    <div class="part-title">Đoạn 5 · Cửa hàng tiện lợi và nhịp sống đô thị</div>
+    <p class="part-sub">Đọc đoạn văn và chọn từ phù hợp nhất cho mỗi chỗ trống 25–30.</p>
+
+    <div class="passage-box">
+      便利商店在台灣幾乎<span class="blank">25</span>融入了日常生活，不管是深夜加班還是清晨趕車，總能
+      <span class="blank">26</span>走進去買杯咖啡、印張文件，甚至繳費。有人批評這種「什麼都能買」的便利，
+      <span class="blank">27</span>養成了現代人凡事講求速成、不願等待的性子；但也有人反駁，城市生活步調本來就快，
+      便利商店<span class="blank">28</span>是順應需求而生，並非<span class="blank">29</span>改變人的習慣。無論立場如何，
+      不可否認的是，便利商店的存在<span class="blank">30</span>改寫了都市人對「距離」與「時間」的感受。
+    </div>
+
+    <div class="q-grid" id="grid5"></div>
+
+    <button class="btn-toggle" data-target="grid5">Xem đáp án & giải thích</button>
+  </div>
+</section>
+
+<section class="cta-footer">
+  <div class="container">
+    <h2>Muốn luyện thêm đề TOCFL?</h2>
+    <p>Khám phá lộ trình học tiếng Trung có cấu trúc của XuanXuexi, từ HSK 1 đến trình độ chuyên nghiệp.</p>
+    <a href="index.html" class="btn-primary">Về trang chủ XuanXuexi</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 LeafLune Universe. All rights reserved.</div>
+    <div style="margin-top:8px;"><a href="index.html">XuanXuexi</a> · <a href="mailto:hoangxuanhttx@gmail.com">Liên hệ</a></div>
+  </div>
+</footer>
+
+<script>
+  const set1 = [
+    { num: 1, options: ["沒落", "蓬勃", "繁榮", "興盛"], correct: 0,
+      explain: '"沒落" nghĩa là "suy tàn, mai một". Câu văn nói nghề này đang dần mất đi, tương phản với thời trẻ ông từng nổi tiếng — nên chọn nghĩa tiêu cực "沒落", không phải các từ mang nghĩa hưng thịnh.' },
+    { num: 2, options: ["熬", "拖", "耗", "花"], correct: 0,
+      explain: '"熬" nghĩa là "chịu đựng, kiên trì vượt qua (thời gian khó khăn)", nhấn mạnh sự gian khổ khi học nghề nhiều năm — sắc thái phù hợp hơn "花" (chỉ đơn thuần "bỏ ra") hay "拖/耗" (mang nghĩa trì hoãn, lãng phí).' },
+    { num: 3, options: ["換作", "只要", "除非", "以致"], correct: 0,
+      explain: '"換作" nghĩa là "nếu đổi thành, giả sử là". Câu nói "換作現在" = "nếu là bây giờ (thay vì ngày xưa)", dùng để so sánh hoàn cảnh xưa và nay.' },
+    { num: 4, options: ["甘心", "忍心", "死心", "甘願"], correct: 1,
+      explain: '"不忍心" nghĩa là "không nỡ". Ông thợ không nỡ để cả đời kinh nghiệm bị khóa trong ngăn kéo, nên mới mở lớp dạy — diễn tả sự tiếc nuối, gắn bó tình cảm.' },
+    { num: 5, options: ["從而", "反而", "幸而", "縱然"], correct: 0,
+      explain: '"從而" nghĩa là "nhờ đó, do đó" — dùng để nối kết quả tích cực (giảm rào cản học tập) với nguyên nhân phía trước (đơn giản hóa kỹ thuật).' },
+    { num: 6, options: ["願意", "一味", "執意", "逕自"], correct: 0,
+      explain: '"願意" nghĩa là "sẵn lòng". Câu văn nói điều đáng sợ là không ai sẵn lòng thử gìn giữ nghề — các lựa chọn khác đều mang sắc thái tiêu cực (cố chấp, tự ý làm) không phù hợp ngữ cảnh.' },
+  ];
+
+  const set2 = [
+    { num: 7, options: ["迷惑", "照亮", "驚動", "吸引"], correct: 0,
+      explain: '"迷惑" nghĩa là "làm mất phương hướng, gây nhầm lẫn" — hô ứng với câu trước "vốn dựa vào ánh sao để định hướng", ánh đèn thành phố khiến chim lạc hướng dẫn đến va chạm.' },
+    { num: 8, options: ["干擾", "加強", "保護", "恢復"], correct: 0,
+      explain: '"干擾" nghĩa là "gây nhiễu, cản trở". Ô nhiễm ánh sáng cản trở khả năng định vị của chim — ba lựa chọn còn lại mang nghĩa tích cực, trái ngược với chủ đề đoạn văn.' },
+    { num: 9, options: ["以致", "從而", "幸而", "反而"], correct: 0,
+      explain: '"以致" dùng để nối một hậu quả tiêu cực ("lỡ mất thời điểm di cư tốt nhất") với nguyên nhân phía trước — khác với "從而" thường mang sắc thái trung tính hoặc tích cực.' },
+    { num: 10, options: ["特地", "刻意", "索性", "順勢"], correct: 0,
+      explain: '"特地" nghĩa là "đặc biệt, riêng để làm việc gì đó". Thành phố đặc biệt chọn đúng giai đoạn cao điểm di cư để hành động, thể hiện tính chủ đích rõ ràng.' },
+    { num: 11, options: ["調降", "提升", "維持", "恢復"], correct: 0,
+      explain: '"調降" nghĩa là "điều chỉnh giảm xuống". Câu văn nói giảm độ sáng của các tòa nhà xuống mức thấp nhất — ba lựa chọn còn lại đều trái nghĩa hoặc không phù hợp.' },
+    { num: 12, options: ["然而", "而且", "因此", "甚至"], correct: 0,
+      explain: '"然而" nghĩa là "tuy nhiên" — tạo sự tương phản giữa việc "hy sinh cảnh quan ban đêm" và điều đổi lại là "cứu được hàng ngàn sinh mạng chim di cư".' },
+  ];
+
+  const set3 = [
+    { num: 13, options: ["不過", "而且", "於是", "況且"], correct: 0,
+      explain: '"不過" nghĩa là "tuy nhiên". Câu văn chuyển từ tâm trạng lo lắng ban đầu sang dần yên tâm — cần một liên từ chuyển ý nhẹ nhàng, không phải liên từ bổ sung hay nguyên nhân-kết quả.' },
+    { num: 14, options: ["頗為", "過於", "屢屢", "逕自"], correct: 0,
+      explain: '"頗為" nghĩa là "khá là, tương đối". "兩人相處頗為融洽" = "hai người sống với nhau khá hòa hợp" — mức độ vừa phải, tích cực.' },
+    { num: 15, options: ["順帶", "竟然", "僅僅", "反倒"], correct: 0,
+      explain: '"順帶" nghĩa là "tiện thể, nhân tiện". "信末順帶提了一句" = "cuối thư tiện thể nhắc một câu" — diễn tả việc nhắc đến một cách nhẹ nhàng, không cố ý nhấn mạnh.' },
+    { num: 16, options: ["過得去", "說不定", "不由得", "少不了"], correct: 0,
+      explain: '"過得去" nghĩa là "tạm ổn, còn chấp nhận được". "家裡的狀況還過得去" = "tình hình gia đình vẫn tạm ổn" — trấn an con không cần lo lắng về tiền bạc.' },
+    { num: 17, options: ["動不動就", "三番兩次", "接二連三", "死心塌地"], correct: 0,
+      explain: '"動不動就" nghĩa là "hễ một chút là lại...", diễn tả thói quen lặp lại tùy tiện. "別再動不動就熬夜" = "đừng cứ hễ có việc là thức khuya". "死心塌地" nghĩa là "một lòng một dạ", hoàn toàn lạc chủ đề.' },
+    { num: 18, options: ["適應", "落實", "著手", "察覺"], correct: 0,
+      explain: '"適應" nghĩa là "thích nghi". "盼你早日適應" = "mong con sớm thích nghi (với cuộc sống du học)" — phù hợp với ngữ cảnh thư gửi con xa nhà.' },
+  ];
+
+  const set4 = [
+    { num: 19, options: ["日益", "猛然", "屢次", "逐一"], correct: 0,
+      explain: '"日益" nghĩa là "ngày càng". Diễn tả độ chính xác của dịch thuật AI tăng dần theo thời gian, mang tính liên tục chứ không đột ngột như "猛然".' },
+    { num: 20, options: ["消失", "誕生", "興起", "擴張"], correct: 0,
+      explain: '"消失" nghĩa là "biến mất". Câu văn nói mọi người lo lắng nghề phiên dịch sẽ biến mất vì AI — ba lựa chọn còn lại đều mang nghĩa "xuất hiện/phát triển", trái nghĩa.' },
+    { num: 21, options: ["不如", "不及", "不妨", "不僅"], correct: 0,
+      explain: '"不如" trong cấu trúc "情況不如外界想像的那樣悲觀" nghĩa là "tình hình không bi quan như người ngoài tưởng tượng" — mẫu câu so sánh "不如...那樣...".' },
+    { num: 22, options: ["大致", "勉強", "幾乎", "徹底"], correct: 0,
+      explain: '"大致" nghĩa là "về cơ bản, đại khái" — máy dịch có thể tạo ra bản nháp về cơ bản dùng được, mang sắc thái trung tính hơn "勉強" (miễn cưỡng, gượng ép).' },
+    { num: 23, options: ["仰賴", "顧及", "迎合", "演變"], correct: 0,
+      explain: '"仰賴" nghĩa là "phụ thuộc vào, dựa vào". Những đoạn văn có ẩn ý, chơi chữ vẫn cần dựa vào biên dịch viên giàu kinh nghiệm để chỉnh sửa.' },
+    { num: 24, options: ["不如", "倒不", "反而", "何況"], correct: 0,
+      explain: 'Cấu trúc cố định "與其說…不如說…" nghĩa là "thay vì nói là… thì nên nói là…", dùng để đưa ra cách diễn đạt chính xác hơn.' },
+  ];
+
+  const set5 = [
+    { num: 25, options: ["悄然", "驟然", "顯然", "果然"], correct: 0,
+      explain: '"悄然" nghĩa là "lặng lẽ, âm thầm". Cửa hàng tiện lợi lặng lẽ hòa vào cuộc sống hàng ngày mà người ta không để ý — khác với "驟然" (đột ngột).' },
+    { num: 26, options: ["隨時", "屢次", "逕自", "姑且"], correct: 0,
+      explain: '"隨時" nghĩa là "bất cứ lúc nào". Dù là khuya hay sáng sớm, người ta đều có thể vào mua cà phê bất cứ lúc nào.' },
+    { num: 27, options: ["無形中", "有意間", "不禁", "難免"], correct: 0,
+      explain: '"無形中" nghĩa là "một cách vô hình, không hay biết". Sự tiện lợi âm thầm hình thành thói quen muốn mọi thứ nhanh chóng, không phải cố ý ("有意間").' },
+    { num: 28, options: ["正", "偏", "卻", "竟"], correct: 0,
+      explain: '"正" ở đây nghĩa là "chính là, đúng là" — nhấn mạnh khẳng định: cửa hàng tiện lợi chính là ra đời để đáp ứng nhu cầu, không mang sắc thái bất ngờ như "竟" hay tương phản như "卻".' },
+    { num: 29, options: ["刻意", "順勢", "逐步", "悄悄"], correct: 0,
+      explain: '"刻意" nghĩa là "cố ý, có chủ đích". Câu văn phản bác rằng cửa hàng tiện lợi không cố ý thay đổi thói quen con người, mà chỉ đáp ứng nhu cầu sẵn có.' },
+    { num: 30, options: ["確實", "未必", "難免", "姑且"], correct: 0,
+      explain: '"確實" nghĩa là "quả thực, đích thực" — khẳng định chắc chắn rằng cửa hàng tiện lợi đã thay đổi cách người thành thị cảm nhận về khoảng cách và thời gian.' },
+  ];
+
+  function renderGrid(containerId, items) {
+    const el = document.getElementById(containerId);
+    const letters = ["A", "B", "C", "D"];
+    items.forEach(q => {
+      const card = document.createElement("div");
+      card.className = "q-card";
+      const optsHtml = q.options.map((opt, i) => `
+        <div class="opt${i === q.correct ? ' correct' : ''}"><span class="letter">${letters[i]}</span>${opt}</div>
+      `).join("");
+      card.innerHTML = `
+        <div class="q-num">Câu ${q.num}</div>
+        ${optsHtml}
+        <div class="explain">${q.explain}</div>
+      `;
+      el.appendChild(card);
+    });
+  }
+
+  renderGrid("grid1", set1);
+  renderGrid("grid2", set2);
+  renderGrid("grid3", set3);
+  renderGrid("grid4", set4);
+  renderGrid("grid5", set5);
+
+  document.querySelectorAll(".btn-toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const grid = document.getElementById(targetId);
+      const isOpen = btn.classList.toggle("is-open");
+      grid.querySelectorAll(".q-card").forEach(c => c.classList.toggle("revealed", isOpen));
+      btn.textContent = isOpen ? "Ẩn đáp án" : "Xem đáp án & giải thích";
+    });
+  });
+</script>
+
+</body>
+</html>

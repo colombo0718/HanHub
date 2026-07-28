@@ -1,166 +1,234 @@
-# PROJECT.md — xuanxuexi 專案說明
+# PROJECT.md — xuanxuexi（XX 宣學習）
 
-> 最後更新：2026-04-05  
-> 本檔供 Claude（AI）閱讀，了解本專案架構與開發規範。
-
----
-
-## 1. 專案定位（一段話）
-
-本目錄是 **LeafLune（LL）宇宙** 的核心工作區。LL 宇宙是一個以「Edutainment（寓教於樂）」為核心的生態系，整合 **教育 × 遊戲 × AI × 強化式學習（RL）哲學**，並在此世界觀下同時推進多個品牌和產品線。目前最接近出貨的產品是 **Pinyin Poker 64**（漢語拼音撲克牌），並有完整設計規格的 **Sentence Summoner**（造句對戰遊戲）。
+> 最後更新：2026-07-26
+> 本檔供 Claude（AI）閱讀，了解本專案在 LL 宇宙中的位置、架構與開發規範。
 
 ---
 
-## 2. 品牌與平台架構
+## 1. LL 三軸定位
 
-### 對外三大品牌
-| 代號 | 名稱 | 定位 |
-|------|------|------|
-| XX | 宣學習 XuanXuexi | 教育 / 語言學習 / 課程 |
-| LL | LeafLune 葉月育樂 | IP / 情緒價值 / 世界觀 |
-| SS | StrategySpace 策略空間 | 競技 / 對戰 / AI 擂台 |
+| 軸 | 座標 | 說明 |
+|----|------|------|
+| 空間軸 | **對外品牌** | 直面市場的子品牌，主要客群是中文學習者（英文/越南文母語） |
+| 時間軸 | **重啟中、官網已上線** | 官網 [xuanxuexi.leaflune.org](https://xuanxuexi.leaflune.org) 已上線（英文版 + 越南文版 `/vi`），Sentence Summoner 已在 strategy-space.leaflune.org 上線；其餘產品線（Pinyin Poker、Chinese Flashcard）仍在推進 |
+| 內容軸 | **學習軸（主）+ 玩樂軸（副）** | XX 是 LL 整體中「學習」的對外旗艦；玩樂副線體現在卡牌/遊戲化（Pinyin Poker、Sentence Summoner） |
 
-### 對內四大平台
-| 代號 | 名稱 | 功能 |
-|------|------|------|
-| RR | ReinRoom 強化教室 | RL 訓練平台，AI 誕生地 |
-| GG | GameGeek 遊戲極客 | 控制器橋接層（人 / AI ↔ 遊戲） |
-| MM | MatrixManager 矩陣總管 | 任務 / 專案 / 文件中控台 |
-| TT | TreasureToolbox 寶藏工具箱 | 卡牌排版 / 素材生產工廠 |
+XX 在 LL 宇宙中的角色：**「學習」這條軸目前對外只有 XX 一個品牌**——XX 走得起來，LL 整體的「Edutainment」才真正完整。
 
 ---
 
-## 3. 目錄結構與關鍵檔案
+## 2. 一段話定位
+
+XX 是面向外國人（英文/越南文母語）的完整線上中文學習平台，簡體繁體皆可學。從**學習教材 → 評量測驗 → 應考輔助**一條龍，終局目標是輸送「中文流利且懂 AI 與科技」的人才，銜接學校深造或企業服務。語言不是目的，而是進入生活與職場的門票；AI 不是噱頭，而是放大效率的工具。
+
+目前已上線：官網（含越南文版）、TOCFL C1 模擬試題（自製、非官方真題）、Sentence Summoner（造句對戰，於 strategy-space.leaflune.org）。仍在推進：**Pinyin Poker 64**（80% 完成，卡在 PDF 與 Gumroad 上架）、**Chinese Flashcard L1 Travel 60 字**（最快 MVP 切片）。
+
+> 2026-07-26：定位從「學習平台」擴充為「人才管線」——教材/評量/應考輔助之外，明確終局是銜接學校與企業，此擴充尚未回填進課程地圖與內容產線設計，待下次課綱討論落實。
+
+---
+
+## 3. 核心 IP：小春老師
+
+> XX 跟 LL 最大的差異：**LL 是 colombo 第一人稱，XX 是小春老師代言**。
+
+- 小春老師是 XX 所有教學內容的**唯一權威主講者**
+- 規則：所有「知識解說、學習目標、重點整理、錯誤提醒」一律由小春老師出場
+- 確保學習者的信任感與一致性
+- **形象未定型**：影片中長怎樣、是真人還是 AI 角色、卡通風格還是寫實風格——尚未決定
+  - 形象不定，後續所有 XX 內容（影片、卡片插圖、官網主視覺）都無法量產
+  - 這是 image-studio **路徑 B（GPU ComfyUI + LoRA）** 真正值得提前的最強理由
+
+---
+
+## 4. 課程地圖架構（HSK × 情境 × AI 漸進三層）
+
+詳見 [`notes/宣學習課程地圖架構 v2.0（整併版）.md`](notes/宣學習課程地圖架構 v2.0（整併版）.md)——整併三級總覽、9 冊 131 章骨架、12 主題螺旋矩陣、評量/應考輔助缺口盤點。v2.0 開頭列了 4 處新舊決策張力（越南文公開與否、品牌屬性、TOCFL 錨點、客群語言）尚待 colombo 拍板，下次課綱討論務必先對齊這幾點。
+
+| 級別 | HSK | 情境 | AI 涉及 |
+|------|-----|------|---------|
+| 初級 | 1-3 | 生活生存、日常溝通 | 無 |
+| 中級 | 4-6 | 校園/工廠/辦公室過渡 | 作為話題出現，不依賴 |
+| 高級 | 7-9 | 專業職場、跨部門協作 | 正式導入為任務工具 |
+
+四條主線：語言能力 / 情境成長 / AI 融合 / 動力與留存（任務制 + 點數）。
+
+每個單元的標準結構（可量產模板）：小春老師開場 → 新單字句型 → 情境對話 → 朗讀練習 → 練習題 → 單元小測 → 完成回饋。
+
+---
+
+## 5. 內容產線（單源多出）
+
+XX 採用「**一份素材、兩條變現路徑**」的單源多出產線：
+
+```
+上游（量產層）
+  教學投影片 + 講稿
+  ├─ content-engine 生成（HSK 級別 / 情境 / 文法點 模板化）
+  └─ image-studio 生成（小春老師形象、場景插圖、卡片視覺）
+
+  ↓ 同一份素材分流
+
+分流 A：影片化 → 會員訂閱內容
+  投影片 + 旁白 → ffmpeg 拼接 → 會員訂閱制（YouTube 會員 / 自有訂閱平台）
+
+分流 B：直送真人課
+  投影片直接交給 Xuan → 線上課真人教學
+  + colombo 課程末尾中文母語者 cameo 互動
+
+→ 一份備課素材 = 兩條收入流
+→ Xuan 備課時間從 hr 級壓到 min 級（核心優化目標）
+```
+
+**產線設計原則**：
+- 投影片 + 講稿是最小可複用單元，影片和真人課都從這裡分支
+- 量產層由 content-engine + image-studio 自動化，Xuan 只負責「出鏡」這個她最擅長的環節
+- colombo cameo 是差異化賣點（一般越南中介機構無法提供母語者對話）
+
+---
+
+## 6. 對外/對內接口（跟 LL 其他專案的關係）
+
+### 上游依賴（XX 等待這些就位）
+
+| 專案 | XX 需要它做什麼 |
+|------|----------------|
+| `image-studio` | 小春老師角色形象（LoRA 一致性）、卡牌插圖、官網主視覺、課程縮圖 |
+| `content-engine` | HSK 單元批量生成模板、多語言翻譯（中/英/越）、跨平台撒播（TikTok/小紅書 學中文社群） |
+
+### 下游服務（XX 提供給 LL 整體）
+
+- LL 學習軸的對外旗艦
+- 越南文通路（colombo 女友是越南人，是 LL 整體中稀缺的多語資源節點）
+- 卡牌/桌遊產品線在 LL 整體的代表
+
+---
+
+## 7. 目錄結構與關鍵檔案
 
 ```
 xuanxuexi/
-├── Card/                        ← Pinyin Poker 64 網頁原型
-│   ├── index.html               ← 拼音卡牌生成器（互動預覽）
-│   ├── pinyinPoker64.html       ← 64張牌完整展示
-│   ├── pinyinPoker64_download.html ← 附下載功能版本
-│   ├── manyMoji.html            ← Emoji 多牌展示
-│   ├── create8A4pdf.html        ← A4 PDF 生成工具
-│   ├── bear.html                ← 熊版卡牌（變體）
-│   ├── test.html                ← 測試頁面
-│   ├── pinyinDeck.js            ← 64張牌資料（主版）
-│   ├── pinyinDeck_ds.js         ← 64張牌資料（ds 版本）
-│   ├── leaflune_emoji.png       ← LL 版 Emoji 圖集
-│   ├── xuanxuexi_emoji.png      ← XX 版 Emoji 圖集
-│   ├── pp64/                    ← 已生成的 64張 PNG（原版）
-│   └── pp64_ll/                 ← 已生成的 64張 PNG（LeafLune 版）
+├── index.html                               ← XX 官網（英文版、已上線）
+├── vi/                                      ← 越南文版官網（已上線）
+│   ├── index.html                           ← 越南文首頁
+│   └── c1-mock-exam.html                    ← TOCFL C1 模擬試題（自製、非官方真題、5 段 30 題）
 │
-├── tocfl-material-gen/          ← TOCFL 教材生成工具（獨立子專案）
-│   ├── download_resources.py
-│   ├── sample_tests/
-│   ├── teacher_examples/
-│   └── vocabulary/
+├── Card/                                    ← Pinyin Poker 64 網頁原型
+│   ├── index.html                           ← 拼音卡牌生成器（互動預覽）
+│   ├── pinyinPoker64.html                   ← 64 張牌完整展示
+│   ├── pinyinPoker64_download.html          ← 附下載功能版本
+│   ├── create8A4pdf.html                    ← A4 PDF 生成工具（雛形）
+│   ├── pinyinDeck.js                        ← 64 張牌資料（主版）
+│   ├── pp64/                                ← 已生成的 64 張 PNG（XX 版）
+│   └── pp64_ll/                             ← 已生成的 64 張 PNG（LL 版）
 │
-├── download_neocities_folder.py ← 從 Neocities 下載整個資料夾的工具
-├── download-neocities-folder.mjs← 同上（Node.js 版）
-├── 新版HSK考试大纲.pdf           ← HSK 3.0 官方大綱（參考資料）
+├── notes/                                   ← 產品規劃文件（2026-07-26 從根目錄歸檔）
+│   ├── 宣學習（XuanXuexi）課程地圖架構 v1.0（對齊 HSK 3.0）.md
+│   ├── 漢語單詞遊戲卡造句對戰系統 v1.0.md
+│   ├── Chinese Flashcard 商業模式規劃 & 卡片三維分類定義.md
+│   ├── LeafLune 卡牌／桌遊產品輸出標準 v1.0.md
+│   ├── 拼音學習卡_*.md                      ← Pinyin Poker 多版本規劃
+│   └── 漢語拼音 Emoji 學習卡（64 張）.md
 │
-├── CLAUDE.md                    ← AI 工作規範（本目錄通用）
-├── PROJECT.md                   ← 本檔
-└── [多份 .md 規劃文件]           ← 見下方「規劃文件」
+├── curriculum/                              ← 逐冊教材大綱（規劃中、尚未建檔，見 §13）
+├── tocfl_bank/                              ← TOCFL 官方素材庫（2026-07-26 從 C:\Users\USER\tocfl_bank 移入，554 檔）
+├── tocfl-material-gen/                      ← TOCFL 教材生成工具（暫不擴充）
+├── scripts/                                 ← 各種輔助腳本
+├── playwright-state/                        ← Playwright 狀態存放
+├── gemini-downloads/                        ← Gemini 下載產物
+│
+├── CLAUDE.md / PROJECT.md / TODO.md / CHANGELOG.md / README.md
+└── XuanXuexi_emoji.png                      ← XX 品牌 Emoji
 ```
 
----
-
-## 4. 規劃文件清單
-
-| 檔名 | 內容 |
-|------|------|
-| `LL_Universe_MasterPlan_v1.md` | LL 宇宙總藍圖，所有子專案的地圖與索引 |
-| `LL生態系架構.md.md` | 五大平台詳細職責與三大閉環（AI / 玩家 / 經濟） |
-| `LeafLune Universe 關係架構總覽.md` | 品牌 × 平台 × IP × 商品的層次關係 |
-| `宣學習課程地圖架構 v1.0.md` | XX 課程骨架，HSK 1–9 × 情境 × AI 融合 |
-| `漢語單詞遊戲卡造句對戰系統 v1.0.md` | Sentence Summoner 完整遊戲設計規格 |
-| `LeafLune 卡牌桌遊產品輸出標準 v1.0.md` | 卡牌出版 SOP（PDF 規格、印刷規格、Gumroad 上架流程） |
-| `Chinese Flashcard 商業模式規劃.md` | Flashcard MVP 規劃 + 卡片三維分類系統 |
-| `LeafLune 宇宙的多維度架構思考.md` | 架構思考補充文 |
-| `專案管理 Project Manager.md` | HackMD 各品牌專案連結索引（部分連結待補） |
-| `拼音學習卡_牌組規劃*.md` | 拼音卡牌規劃草稿（多版本） |
-| `漢語拼音 Emoji 學習卡.md` | 64 張拼音卡 Emoji 選用規劃 |
+> LL 宇宙層級戰略文件（`LL_Universe_MasterPlan_v1.md` 等 5 份）已於 2026-07-26 搬離本專案至 `matrix-manager/inbox/`——這些文件跟 xuanxuexi 對外品牌內容無關，留在會被部署的目錄裡是外流風險。
 
 ---
 
-## 5. 核心產品規格
+## 8. 核心產品規格
 
-### 5.1 Pinyin Poker 64（最接近出貨）
+### 7.1 Pinyin Poker 64（最接近出貨，80% 完成）
 
-- **64 張卡牌**，4 個花色 × 16 張：
-  - L（聽力・水 💧）、S（口說・火 🔥）、R（閱讀・土 🌱）、W（書寫・風 🌬）
-- 每張卡包含：主音（聲母/韻母/聲調符號）、漢字、拼音、Emoji
-- 識別碼格式：`[花色][十六進位]`，例如 `L3` = 聽力組第 4 張（g/狗/gǒu/🐶）
-- 目前狀態：
-  - ✅ 64 張 PNG 圖已生成（`pp64/` 與 `pp64_ll/` 兩版本）
-  - ✅ 網頁互動原型完成（`Card/` 下的 HTML 頁面）
-  - ⏳ 缺：A4 PDF 輸出、使用說明 PDF、Gumroad 上架
+- 64 張卡牌，4 花色 × 16 張
+  - L 聽力（水 💧）/ S 口說（火 🔥）/ R 閱讀（土 🌱）/ W 書寫（風 🌬）
+- 每張卡：主音、漢字、拼音、Emoji
+- 識別碼：`[花色][十六進位]`，例 `L3` = 聽力組第 4 張
+- 規格：63×88mm 標準撲克牌、出血 3mm、300dpi、CMYK
+- ✅ 64 張 PNG 已生成（`pp64/` + `pp64_ll/`）
+- ✅ 網頁互動原型完成
+- ⏳ 缺：A4 PDF 輸出、使用說明 PDF、Gumroad 上架文案、商品頁
 
-**卡牌標準規格（印刷用）：**
-- 成品尺寸：63 × 88 mm（標準撲克牌）
-- 出血：四邊各 3 mm（設計尺寸 69 × 94 mm）
-- 解析度：300 dpi
-- 顏色模式：CMYK
-- 輸出格式：PDF（正面 fronts + 背面 back）、PNG（每張獨立）
+### 7.2 Sentence Summoner 造句對戰（規格完整、待實作）
 
-### 5.2 Sentence Summoner 造句對戰系統（規格完整，待實作）
+詳見 [`漢語單詞遊戲卡造句對戰系統 v1.0.md`](漢語單詞遊戲卡造句對戰系統 v1.0.md)
 
-- 用「造句」打架，漢語程度決定戰力
-- 四種主力詞性：
-  - **名詞卡**（角色，永久四維 HP/ATK/DEF/SPD）
-  - **形容詞卡**（持續 buff/debuff）
-  - **副詞卡**（持續行動風格 buff/debuff）
-  - **動詞卡**（一回合爆發招式，使用後丟棄）
-  - **陷阱卡**（其他詞性，增加造句條件，不加數值）
-- 攻擊流程：選角色 → 選動詞卡 → 造句（SVO 結構）→ 計算 ATK → 速度命中判定 → 扣血
-- 難度分級：Lv.0（只名詞）→ Lv.1（+動詞）→ Lv.2（+形容詞/副詞）→ Lv.3（+陷阱）
-- 模式：PvP（學生 vs 學生）/ PvE（全班 vs 老師 Boss）
+- 用造句打架，漢語程度決定戰力
+- 卡片類型：名詞（角色 HP/ATK/DEF/SPD）/ 動詞（招式）/ 形容詞 副詞（buff/debuff）/ 陷阱
+- 難度分級 Lv.0-Lv.3，模式 PvP / PvE
+- 屬於長線項目，非當前主攻
 
-### 5.3 Chinese Flashcard（MVP 規劃中）
+### 7.3 Chinese Flashcard MVP（規格清楚、4 週可成）
 
-- 三維分類系統：**難度**（HSK 等級 / 自家 L1–L5）× **領域/場景** × **文法**
-- MVP 目標：旅遊主題，機場+飯店，60 個核心單字，英文介面
-- 輸出格式：CSV（可匯入 Anki/Quizlet）、Anki 套牌、A4 PDF
+詳見 [`Chinese Flashcard 商業模式規劃 & 卡片三維分類定義.md`](Chinese Flashcard 商業模式規劃 & 卡片三維分類定義.md)
+
+- 三維分類：難度（HSK/internal_level）× 領域場景（domain/scene/speech_function）× 文法（unit_type/pos/grammar_point/grammar_structure/register）
+- MVP 鎖定：**L1 Travel — Airport & Hotel 60 Words**
+- 客群：英文介面、自學中文初學者
+- 4 週實作：選字 → 補例句翻譯 → 匯出 CSV/Anki/PDF → Gumroad
+- **這是 XX 重啟時最快可驗證商業模式的切片**
 
 ---
 
-## 6. 工具腳本
+## 9. 技術細節
 
-### download_neocities_folder.py / .mjs
-從 Neocities 下載整個資料夾，用於備份線上網站檔案。
-
-```bash
-# Python 版用法
-python download_neocities_folder.py --dir Card --out ./neocities-backup --api-key YOUR_KEY
-
-# 認證方式：--api-key 或 --username + --password，或環境變數 NEOCITIES_API_KEY
-```
+- **語言**：純 HTML/CSS/JS（無框架、無 build）
+- **工具腳本**：Python（Neocities 下載、Playwright）
+- **部署**：Cloudflare Pages，已上線 `xuanxuexi.leaflune.org`（英文版 + `/vi` 越南文版）
+  - `wrangler pages deploy . --project-name=xuanxuexi --branch=master`
+  - **⚠️ 絕不可對 repo 根目錄直接跑 `wrangler pages deploy .`**——根目錄過去混有 LL 內部文件與 25MB+ 大型素材檔，會導致外流與部署卡關。固定流程：複製 `index.html` / `Card/` / `vi/` 到乾淨的暫存資料夾（例：`C:\Users\USER\_xuanxuexi_deploy`）再部署，部署完刪除暫存資料夾
+- **卡牌印刷規格**：CMYK 300dpi PDF、出血 3mm
+- **越南文支援**：已上線（`vi/` 資料夾，字體用 Google Fonts「Be Vietnam Pro」確保聲調符號正確渲染，女友協助翻譯與校對）
 
 ---
 
-## 7. 開發規範
+## 10. 開發規範
 
-- **不要動已生成的 PNG 圖片**（`pp64/`、`pp64_ll/`）除非要重新生成整批
-- **新卡牌資料修改**：改 `pinyinDeck.js`，再重新生成 PNG
-- **卡牌命名規則**：`[花色][十六進位].png`，例如 `L3.png`、`WF.png`
-- **兩套品牌**：`pp64/` 是 XuanXuexi 版，`pp64_ll/` 是 LeafLune 版（Emoji 圖集不同）
-
----
-
-## 8. 待辦大項（跨專案）
-
-- [ ] Pinyin Poker 64：A4 PDF 輸出 + 使用說明 + Gumroad 上架
-- [ ] Sentence Summoner：卡牌實體製作（數值設計、美術）
-- [ ] Chinese Flashcard MVP：60 個旅遊單字包製作
-- [ ] HackMD 專案管理連結補全（`專案管理 Project Manager.md`）
-- [ ] `LL_Projects_Index_v1.md` 建立
-- [ ] 各品牌 spec 文件（`LL_Brand_XX_spec_v1.md` 等）
+- **commit 訊息**：繁體中文
+- **不要動已生成的 PNG**（`pp64/`、`pp64_ll/`）除非要重新生成整批
+- **新卡牌資料修改**：改 `pinyinDeck.js` 後重新生成 PNG
+- **卡牌命名**：`[花色][十六進位].png`，例 `L3.png`、`WF.png`
+- **兩套品牌共存**：`pp64/` 是 XX 版、`pp64_ll/` 是 LL 版（Emoji 圖集不同）
+- **小春老師形象一致性**：定型後寫進 `image-studio/prompts/styles/xiaochun-laoshi.md` 跨專案共用
 
 ---
 
-## 9. 外部資源
+## 11. 已知坑與注意事項
 
-- 專案管理（HackMD）：詳見 `專案管理 Project Manager.md`
-- 部署平台：Neocities（`download_neocities_folder.py` 用於備份）
-- 卡牌上架目標平台：Gumroad
+- PROJECT.md 之前 (2026-04-05 版) 早於 LL 三軸架構與 content-engine 誕生，已於 2026-05-08 全面對齊
+- 「小春老師」形象未定型是 XX 重啟的最大阻塞
+- TOCFL 教材生成工具（`tocfl-material-gen/`）功能完整但目前非主力，暫不擴充
+- ✅ 舊規劃 .md 已於 2026-07-26 歸檔進 `notes/`（見 §7、§13）
+- **部署安全**：repo 根目錄含大型素材檔（HSK 大綱 PDF、越南文教材 PDF/PPTX，最大 32MB+）與 `tocfl_bank/`（554 檔）。CF Pages 單檔 25MiB 上限，且直接部署根目錄有內部文件外流風險——務必走 §9 的乾淨資料夾部署流程
+- Sentence Summoner 已在 strategy-space.leaflune.org 上線，但 xuanxuexi 本地 `notes/` 內的規格文件是否為最新版本、跟上線版是否一致，尚未核對
+
+---
+
+## 12. 重啟切入順序（建議）
+
+1. **定小春老師形象** — 上游中的上游，不定型後續無法量產
+2. **用 19 題框架走 XX 旗艦內容系列定位** — XX 的「vibe coding」是什麼？
+3. **Chinese Flashcard L1 Travel MVP 並行** — 4 週可成，先有東西能賣 + 驗證商業模式
+4. **Pinyin Poker 64 收尾上架** — 工具問題（PDF + Gumroad），可在等小春老師形象期間完成
+5. ~~官網建立~~ — ✅ 已完成（英文版 + 越南文版皆已上線）
+
+---
+
+## 13. 相關文件
+
+- 課程地圖（權威版）：[notes/宣學習課程地圖架構 v2.0（整併版）.md](notes/宣學習課程地圖架構 v2.0（整併版）.md)
+- 課程地圖（舊版，僅供歷史對照）：[notes/宣學習課程地圖架構 v1.0.md](notes/宣學習（XuanXuexi）課程地圖架構 v1.0（對齊 HSK 3.0）.md)
+- 第一冊大綱：`curriculum/book-01-hsk1.md`（⚠️ 規劃中，實體檔案尚未建立）
+- 造句對戰規格：[notes/漢語單詞遊戲卡造句對戰系統 v1.0.md](notes/漢語單詞遊戲卡造句對戰系統 v1.0.md)（實際上線版在 strategy-space.leaflune.org，跟本規格文件可能有落差，未逐條核對）
+- Flashcard 商業模式：[notes/Chinese Flashcard 商業模式規劃.md](notes/Chinese Flashcard 商業模式規劃 & 卡片三維分類定義.md)
+- 課綱設計會議紀錄（9 冊 131 章骨架、尚未定案）：`C:/Users/USER/matrix-manager/meetings/2026-05-08-xx-revival-and-curriculum-design.md`
+- LL 整體架構：`C:/Users/USER/matrix-manager/UNIVERSE.md`
+- 內容引擎戰略：`C:/Users/USER/matrix-manager/docs/ll-content-engine.md`

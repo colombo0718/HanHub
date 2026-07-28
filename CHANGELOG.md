@@ -2,6 +2,39 @@
 
 ---
 
+## 2026-07-26
+
+### 官網越南文版 + TOCFL C1 模擬試題上線
+- `vi/index.html`：越南文首頁上線，跟英文版共用設計系統
+- `vi/c1-mock-exam.html`：TOCFL C1（Band C）模擬試題頁，5 段克漏字 30 題，**自製原創題目**（非官方真題，改寫自對官方 Band C 說明 PDF 的難度/出題邏輯理解）
+- 修正越南文聲調符號渲染大小不一問題：導入 Google Fonts「Be Vietnam Pro」（完整越南文字符集支援）
+- 英文版首頁 Sentence Summoner 產品卡接上實際上線連結（strategy-space.leaflune.org）
+
+### 專案檔案整理
+- LL 宇宙戰略文件（`LL_Universe_MasterPlan_v1.md` 等 5 份）搬離本專案至 `matrix-manager/inbox/`——這些文件跟 xuanxuexi 對外品牌無關，留在會被部署的目錄裡是外流風險
+- 7 份產品規劃 .md（課程地圖、造句對戰規格、Flashcard 商業模式等）從根目錄歸檔進 `notes/`
+- 刪除 2 份重複的「漢語單詞遊戲卡造句對戰系統」文件（`v1.0.md` / `_v1.0.md`）
+- `C:\Users\USER\tocfl_bank`（TOCFL 官方素材庫、554 檔）移入本專案 `tocfl_bank/`
+- 建立「乾淨資料夾部署」SOP：`wrangler pages deploy .` 絕不可對 repo 根目錄直接執行，需先複製 `index.html`/`Card/`/`vi/` 到暫存資料夾再部署，避免大型素材檔超過 CF Pages 25MiB 限制、以及內部文件外流
+
+### 定位擴充
+- colombo 明確定位 XX 為完整線上中文學習平台：教材 → 評量測驗 → 應考輔助，終局輸送「中文流利 + 懂 AI 科技」人才銜接學校/企業；客群明確為英文/越南文母語者，簡繁通吃
+
+---
+
+## 2026-05-08
+
+### XX 重啟與課綱設計會議
+- 揭露 XX 品牌背景：為 colombo 越南女友 Xuan 量身打造的姐妹品牌（非單純 LL 子品牌）
+- 確立課綱對齊 **HSK**（非 TOCFL）
+- 設計 9 冊 131 章螺旋式課綱骨架：初級 3 冊 38 章／中級 3 冊 45 章／高級 3 冊 48 章
+- 12 主題 × 9 級別螺旋矩陣（同主題隨級別複雜化）
+- 理論依據：Bruner Spiral Curriculum + Bengio Curriculum Learning
+- 詳見會議紀錄：`matrix-manager/meetings/2026-05-08-xx-revival-and-curriculum-design.md`（**課綱尚未定案**，待對齊每冊章數、AI 線織入方式等事項）
+- PROJECT.md 全面對齊 LL 三軸架構與 content-engine
+
+---
+
 ## 2026-04-05
 
 ### 文件體系建立
