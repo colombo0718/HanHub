@@ -1,8 +1,8 @@
-# 宣學習 XuanXuexi
+# HanHub 漢匯
 
 **LeafLune 宇宙** 旗下的漢語學習品牌，面向英文/越南文母語的外國學習者，致力於以「寓教於樂」的方式讓語言學習更有趣、更有效。簡體繁體皆可學，從教材、評量測驗到應考輔助，一路陪伴學習者到中文流利、能銜接學校深造或企業工作。
 
-🌐 官網：[xuanxuexi.leaflune.org](https://xuanxuexi.leaflune.org)（英文版）／[xuanxuexi.leaflune.org/vi](https://xuanxuexi.leaflune.org/vi)（越南文版）
+🀄 官網：[xuanxuexi.leaflune.org](https://xuanxuexi.leaflune.org)（英文版）／[xuanxuexi.leaflune.org/vi](https://xuanxuexi.leaflune.org/vi)（越南文版）
 
 ---
 
@@ -28,23 +28,3 @@
 
 ### 📝 TOCFL C1 模擬試題
 自製 Band C 難度克漏字模擬題，5 段 30 題，越南文版官網可直接進入練習。非官方真題，是理解 TOCFL 出題邏輯後重新原創設計。
-
----
-
-## 本目錄內容
-
-```
-index.html      官網首頁（英文版）
-vi/             越南文版官網 + C1 模擬試題頁
-Card/           拼音撲克 64 的網頁原型與卡牌 PNG 圖檔
-notes/          產品設計規格與品牌規劃文件
-tocfl_bank/     TOCFL 官方素材庫（參考用，非發佈內容）
-tocfl-material-gen/   TOCFL 教材生成工具
-```
-
----
-
-## 品牌隸屬
-
-宣學習（XX）是 LeafLune Universe（LL 宇宙）旗下的教育品牌。  
-LL 宇宙同時包含 StrategySpace（SS）競技品牌與 LeafLune（LL）IP 品牌。
