@@ -168,14 +168,11 @@ nova-nursery/
 - ✅ 網頁互動原型完成
 - ⏳ 缺：A4 PDF 輸出、使用說明 PDF、Gumroad 上架文案、商品頁
 
-### 7.2 Sentence Summoner 造句對戰（規格完整、待實作）
+### 7.2 Sentence Summoner 造句對戰（已上線，權威規格在別的專案）
 
-詳見 [`漢語單詞遊戲卡造句對戰系統 v1.0.md`](notes/漢語單詞遊戲卡造句對戰系統 v1.0.md)
-
-- 用造句打架，漢語程度決定戰力
-- 卡片類型：名詞（角色 HP/ATK/DEF/SPD）/ 動詞（招式）/ 形容詞 副詞（buff/debuff）/ 陷阱
-- 難度分級 Lv.0-Lv.3，模式 PvP / PvE
-- 屬於長線項目，非當前主攻
+- **已上線**：strategy-space.leaflune.org，四種語言版（en/zh-hant、vi/zh-hant、zh-hans/vi、zh-hans/en）
+- **權威規格**：`D:\strategy-space\SentenceSummoner\GAME-RULES.md` / `DECK-DESIGN.md` / `TODO.md`——這是獨立專案（strategy-space），非本專案維護範圍
+- 本專案 [`notes/漢語單詞遊戲卡造句對戰系統 v1.0.md`](notes/漢語單詞遊戲卡造句對戰系統 v1.0.md) 只是 2025-11 最初概念草案，已被上線版大幅取代（64 張卡改為 32 名詞/16 動詞/16 形容詞、無副詞卡與陷阱卡、加入護甲池/速度閃避/LLM 對手等機制），僅供歷史對照，**不代表現行玩法**
 
 ### 7.3 Chinese Flashcard MVP（規格清楚、4 週可成）
 
@@ -219,7 +216,7 @@ nova-nursery/
 - TOCFL 教材生成工具（`tocfl-material-gen/`）功能完整但目前非主力，暫不擴充
 - ✅ 舊規劃 .md 已於 2026-07-26 歸檔進 `notes/`（見 §7、§13）
 - **部署安全**：repo 根目錄含大型素材檔（HSK 大綱 PDF、越南文教材 PDF/PPTX，最大 32MB+）與 `tocfl_bank/`（554 檔）。CF Pages 單檔 25MiB 上限，且直接部署根目錄有內部文件外流風險——務必走 §9 的乾淨資料夾部署流程
-- Sentence Summoner 已在 strategy-space.leaflune.org 上線，但本專案本地 `notes/` 內的規格文件是否為最新版本、跟上線版是否一致，尚未核對
+- ~~Sentence Summoner 已在 strategy-space.leaflune.org 上線，但本專案本地 `notes/` 內的規格文件是否為最新版本、跟上線版是否一致，尚未核對~~ → 2026-09-11 已核對：本地 v1.0 是歷史草案，已被上線版大幅取代，見 §7.2
 
 ---
 
@@ -238,7 +235,7 @@ nova-nursery/
 - 課程地圖（權威版）：[notes/宣學習課程地圖架構v2.0（整併版）.md](notes/宣學習課程地圖架構v2.0（整併版）.md)
 - 課程地圖（舊版，僅供歷史對照）：[notes/宣學習課程地圖架構 v1.0.md](notes/宣學習（XuanXuexi）課程地圖架構 v1.0（對齊 HSK 3.0）.md)
 - 第一冊大綱：[`curriculum/book-01-hsk1.md`](curriculum/book-01-hsk1.md)（初級固定 10 章/冊，2026-08-07 依拍板規則重編）
-- 造句對戰規格：[notes/漢語單詞遊戲卡造句對戰系統 v1.0.md](notes/漢語單詞遊戲卡造句對戰系統 v1.0.md)（實際上線版在 strategy-space.leaflune.org，跟本規格文件可能有落差，未逐條核對）
+- 造句對戰規格（歷史草案，已被取代）：[notes/漢語單詞遊戲卡造句對戰系統 v1.0.md](notes/漢語單詞遊戲卡造句對戰系統 v1.0.md)——權威版見 `D:\strategy-space\SentenceSummoner\GAME-RULES.md`
 - Flashcard 商業模式：[notes/Chinese Flashcard 商業模式規劃.md](notes/Chinese Flashcard 商業模式規劃 & 卡片三維分類定義.md)
 - 課綱設計會議紀錄（9 冊 131 章骨架、尚未定案）：`C:/Users/USER/matrix-manager/meetings/2026-05-08-xx-revival-and-curriculum-design.md`
 - LL 整體架構：`C:/Users/USER/matrix-manager/UNIVERSE.md`

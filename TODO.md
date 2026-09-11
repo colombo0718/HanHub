@@ -17,14 +17,8 @@
 
 ## Sentence Summoner 造句對戰
 
-> ✅ 2026-07-26：已上線 [strategy-space.leaflune.org/SentenceSummoner/vi_zh-hans/](https://strategy-space.leaflune.org/SentenceSummoner/vi_zh-hans/)，走 StrategySpace（SS）平台而非本地 `Card/` 原型。以下項目是本地舊規格書（`notes/漢語單詞遊戲卡造句對戰系統 v1.0.md`）的任務，跟實際上線版本是否一致尚未核對，暫不刪除、待確認後再清理。
-
-- [ ] 名詞卡數值設計（HP/ATK/DEF/SPD，依 HSK 等級調整）
-- [ ] 動詞卡、形容詞卡、副詞卡數值設計
-- [ ] 陷阱卡句型條件清單
-- [ ] 卡牌美術設計（版面、配色、圖示）
-- [ ] 製作試玩版（最小可玩套組，名詞 10 張 + 動詞 10 張）
-  > 先做 Lv.1，確認玩法後再做 Lv.2
+> ✅ 2026-07-26：已上線 [strategy-space.leaflune.org/SentenceSummoner/vi_zh-hans/](https://strategy-space.leaflune.org/SentenceSummoner/vi_zh-hans/)，走 StrategySpace（SS）平台而非本地 `Card/` 原型。
+> ✅ 2026-09-11 核對完畢：以下項目全部**已由上線版取代**（`D:\strategy-space\SentenceSummoner\` 是獨立專案，非本專案維護範圍）——名詞卡數值定案為 32 張固定四維（無 HSK 等級掛鉤）、動詞/形容詞各 16 張定案（**無副詞卡、無陷阱卡**，設計已捨棄這兩類）、卡牌美術已用 OpenMoji 完成、試玩版已是正式教學/訓練/對戰三模式。本地 `notes/漢語單詞遊戲卡造句對戰系統 v1.0.md` 僅存歷史對照價值，以下待辦不再適用，予以清空。
 
 ---
 
