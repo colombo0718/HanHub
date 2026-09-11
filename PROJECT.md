@@ -173,6 +173,7 @@ nova-nursery/
 - **已上線**：strategy-space.leaflune.org，四種語言版（en/zh-hant、vi/zh-hant、zh-hans/vi、zh-hans/en）
 - **權威規格**：`D:\strategy-space\SentenceSummoner\GAME-RULES.md` / `DECK-DESIGN.md` / `TODO.md`——這是獨立專案（strategy-space），非本專案維護範圍
 - 本專案 [`notes/漢語單詞遊戲卡造句對戰系統 v1.0.md`](notes/漢語單詞遊戲卡造句對戰系統 v1.0.md) 只是 2025-11 最初概念草案，已被上線版大幅取代（64 張卡改為 32 名詞/16 動詞/16 形容詞、無副詞卡與陷阱卡、加入護甲池/速度閃避/LLM 對手等機制），僅供歷史對照，**不代表現行玩法**
+- **歸屬未定案（2026-09-11 討論中）**：Sentence Summoner 目前掛在 strategy-space（SS）底下，但定位上更貼近 Nova Nursery 的語言教學內容；且 **SS（strategy-space）與 SS（Sentence Summoner）縮寫本身衝突**，未來很可能把 Sentence Summoner 專案搬來歸屬 Nova Nursery——**已有共識方向、但不急，尚未排時程**
 
 ### 7.3 Chinese Flashcard MVP（規格清楚、4 週可成）
 
