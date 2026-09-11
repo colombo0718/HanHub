@@ -80,6 +80,6 @@ window.PINYIN_DECK = {
     { suit:"W", hex:"C", main:"iong",hanzi:"熊",   pinyin:"xióng",    emoji:"🐻"    },
     { suit:"W", hex:"D", main:"uan", hanzi:"拳",   pinyin:"quán",     emoji:"👊"    },
     { suit:"W", hex:"E", main:"yo",  hanzi:"喲",   pinyin:"yo",       emoji:"😮"    },
-    { suit:"W", hex:"F", main:"wei", hanzi:"圍",   pinyin:"wei",      emoji:"🧣"    }
+    { suit:"W", hex:"F", main:"wei", hanzi:"圍",   pinyin:"wéi",      emoji:"🧣"    }
   ]
 };

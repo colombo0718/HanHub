@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-09-11（下午，內容複查修正）
+
+### 修正發現的內容問題
+- **救回誤刪的造句對戰規格文件**：2026-07-26 清理時把 `漢語單詞遊戲卡造句對戰系統 v1.0.md` 與 `_v1.0.md` 兩份重複檔案**都刪了**（本意應是去重留一份），導致 PROJECT.md/TODO.md 連結斷了一個多月。從 git 歷史（`4dd45b6` 的上一版）復原內容到 `notes/漢語單詞遊戲卡造句對戰系統 v1.0.md`
+- **修正越南文官網誤導文案**：`vi/index.html` 首頁 promo banner 原寫「trích từ bộ đề thi thử chính thức TOCFL」（取自官方 TOCFL 模擬試題庫），但該題目其實是自製原創、非官方真題，跟考題頁本身的免責聲明矛盾，已改為「Đề tự biên soạn theo phong cách TOCFL Band C」
+- **修正斷連結**：`curriculum/book-01-hsk1.md` §9、`PROJECT.md` §8.2 各有一處連結漏了 `notes/` 路徑前綴，已補上
+- **修正拼音卡資料**：`pinyinDeck.js` W 組 hex F「圍」的拼音 `wei` 補上聲調 `wéi`，跟其他卡片體例一致
+
+---
+
 ## 2026-09-11
 
 ### 品牌定名 Nova Nursery 星苑（colombo 拍板，取代過渡名 HanHub 漢匯）

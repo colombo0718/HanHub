@@ -172,7 +172,7 @@ colombo cameo 環節
 ## 九、相關文件
 
 - [課程地圖架構 v2.0（整併版，權威版）](../notes/宣學習課程地圖架構v2.0（整併版）.md)
-- [課程地圖架構 v1.0（對齊 HSK 3.0，歷史版）](../宣學習（XuanXuexi）課程地圖架構%20v1.0（對齊%20HSK%203.0）.md)
-- [Chinese Flashcard 商業模式規劃](../Chinese%20Flashcard%20商業模式規劃%20&%20卡片三維分類定義.md)
+- [課程地圖架構 v1.0（對齊 HSK 3.0，歷史版）](../notes/宣學習（XuanXuexi）課程地圖架構%20v1.0（對齊%20HSK%203.0）.md)
+- [Chinese Flashcard 商業模式規劃](../notes/Chinese%20Flashcard%20商業模式規劃%20&%20卡片三維分類定義.md)
 - [05-08 設計會議紀錄（歷史對照，冊章數已於 07-28 拍板推翻）](../../matrix-manager/meetings/2026-05-08-xx-revival-and-curriculum-design.md)
 - [PROJECT.md](../PROJECT.md)
