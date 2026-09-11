@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-09-11
+
+### 品牌定名 Nova Nursery 星苑（colombo 拍板，取代過渡名 HanHub 漢匯）
+- 品牌沿革：xuanxuexi 宣學習 → HanHub 漢匯 → **Nova Nursery 星苑**（定案）
+- 命名意涵詳見 `PROJECT.md` §1a：Nova=爆亮新星（學員）、Nursery=安全育苗環境、星苑=諧音「心願」；在 LL 宇宙中承接 Leaf 側（在地培育），對應 Strategy Space 的 Lune 側（宇宙競技）
+- 專案資料夾更名為 `nova-nursery/`（原 repo 名 XuanXuexi）
+- 品牌資產檔更名：`XuanXuexi_emoji.png` → `NovaNursery_emoji.png`、`Card/xuanxuexi_emoji.png` → `Card/nova-nursery_emoji.png`
+- 官網（`index.html` / `en/index.html` / `vi/index.html` / `vi/c1-mock-exam.html`）與 Pinyin Poker 卡牌生成頁（`Card/pinyinPoker64.html` / `pinyinPoker64_download.html`）品牌文字全面替換為 Nova Nursery
+- PROJECT.md / README.md / TODO.md 同步更新；`curriculum/book-01-hsk1.md` 書名標題更新
+- **待確認**：CF Pages 專案與 DNS 是否已跟進改名（暫定網域 `novanursery.leaflune.org`，尚未核實實際部署狀態）；`notes/` 內歷史規劃文件（課程地圖 v1.0/v2.0、市場研究）維持原檔名與內文舊名——視為歷史沉澱文件，不追溯改名
+
+---
+
 ## 2026-07-26
 
 ### 官網越南文版 + TOCFL C1 模擬試題上線

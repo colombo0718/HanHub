@@ -9,7 +9,7 @@
 - [ ] 打包為 zip 並上架 Gumroad
   > 需等 PDF + 說明書都完成
 - [ ] 撰寫 Gumroad 商品頁文案（中/英）
-- [ ] 確認 `pp64_ll/`（LeafLune 版）與 `pp64/`（XuanXuexi 版）差異，決定是否分開上架
+- [ ] 確認 `pp64_ll/`（LeafLune 版）與 `pp64/`（Nova Nursery 版）差異，決定是否分開上架
 - [ ] 製作印刷廠用 CMYK 300dpi PDF（`fronts_300dpi_CMYK.pdf` + `back_300dpi_CMYK.pdf`）
   > 待數位版先上架驗證需求後再做
 
@@ -39,9 +39,9 @@
 
 ---
 
-## 宣學習官網
+## Nova Nursery 官網
 
-- [x] 建立 GitHub repo，串接 Cloudflare Pages 自動部署 — `xuanxuexi.leaflune.org`
+- [x] 建立 GitHub repo，串接 Cloudflare Pages 自動部署 — 網域待改為 `novanursery.leaflune.org`（原 `xuanxuexi.leaflune.org`，需確認 CF Pages 專案與 DNS 是否已跟進改名）
 - [x] 規劃頁面結構（首頁 / 課程 / 周邊產品 / 關於）
 - [x] 實作首頁 HTML/CSS（Hero、品牌介紹、課程預覽區、三支柱、products grid）
 - [x] 越南文版首頁（`/vi`）— 2026-07-26 上線，字體修正（Be Vietnam Pro）已套用
@@ -57,7 +57,7 @@
   > 擱置，待課程平台需求明確後再做
 - [ ] 英文版首頁補上 Sentence Summoner 連結（目前只有 `/vi` 版有接上 strategy-space 連結，英文版 `index.html` 尚未同步）
 - [ ] 評量測驗 / 應考輔助功能規劃
-  > 2026-07-26 colombo 明確定位 XX 為「教材→評量→應考輔助」一條龍平台，終局銜接學校/企業；目前只有 C1 模擬試題一項零星產出，尚無系統性評量/應考輔助規劃，需要新一輪課綱討論落實
+  > 2026-07-26 colombo 明確定位 XX（Nova Nursery）為「教材→評量→應考輔助」一條龍平台，終局銜接學校/企業；目前只有 C1 模擬試題一項零星產出，尚無系統性評量/應考輔助規劃，需要新一輪課綱討論落實
 
 ---
 

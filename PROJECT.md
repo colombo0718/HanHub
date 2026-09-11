@@ -1,6 +1,6 @@
-# PROJECT.md — xuanxuexi（XX 宣學習）
+# PROJECT.md — Nova Nursery 星苑（XX，原 xuanxuexi 宣學習 → HanHub 漢匯 → Nova Nursery 星苑）
 
-> 最後更新：2026-07-26
+> 最後更新：2026-09-11
 > 本檔供 Claude（AI）閱讀，了解本專案在 LL 宇宙中的位置、架構與開發規範。
 
 ---
@@ -10,10 +10,21 @@
 | 軸 | 座標 | 說明 |
 |----|------|------|
 | 空間軸 | **對外品牌** | 直面市場的子品牌，主要客群是中文學習者（英文/越南文母語） |
-| 時間軸 | **重啟中、官網已上線** | 官網 [xuanxuexi.leaflune.org](https://xuanxuexi.leaflune.org) 已上線（英文版 + 越南文版 `/vi`），Sentence Summoner 已在 strategy-space.leaflune.org 上線；其餘產品線（Pinyin Poker、Chinese Flashcard）仍在推進 |
+| 時間軸 | **重啟中、官網已上線** | 官網 [novanursery.leaflune.org](https://novanursery.leaflune.org)（暫定網域，待確認實際部署網址）已上線（英文版 + 越南文版 `/vi`），Sentence Summoner 已在 strategy-space.leaflune.org 上線；其餘產品線（Pinyin Poker、Chinese Flashcard）仍在推進 |
 | 內容軸 | **學習軸（主）+ 玩樂軸（副）** | XX 是 LL 整體中「學習」的對外旗艦；玩樂副線體現在卡牌/遊戲化（Pinyin Poker、Sentence Summoner） |
 
 XX 在 LL 宇宙中的角色：**「學習」這條軸目前對外只有 XX 一個品牌**——XX 走得起來，LL 整體的「Edutainment」才真正完整。
+
+---
+
+## 1a. 品牌命名：Nova Nursery 星苑（2026-09-11 colombo 定案）
+
+品牌名歷經 xuanxuexi 宣學習 → HanHub 漢匯 → **Nova Nursery 星苑**，本次為定案版本，每一層都有意涵：
+
+- **Nova**（拉丁文，突然爆亮的新星）：說的是學員——每個在這裡學習的人，都有可能在某個時刻成為那顆爆亮的星
+- **Nursery**（苗圃、育嬰室）：不是補習班，是讓人在安全、有養分的環境裡慢慢長出能力的地方，育人如育苗
+- **星苑**：「苑」是有圍牆的花園、精心照料的場域，星苑 = 培育星星的園地；諧音「心願」（xīn yuàn）——學語言從來不只是技能，是想靠近一個人、打開一個世界、成為不一樣的自己
+- **在 LL 宇宙中的位置**：LeafLune = Leaf（土地、生長）+ Lune（月、宇宙）。Nova Nursery 承接 **Leaf 側**（在地、有機、培育），Strategy Space 承接 **Lune 側**（宇宙、競技、無邊）——兩者各守一半靈魂，共同撐起 LeafLune 的 Edutainment 世界觀
 
 ---
 
@@ -106,7 +117,7 @@ XX 採用「**一份素材、兩條變現路徑**」的單源多出產線：
 ## 7. 目錄結構與關鍵檔案
 
 ```
-xuanxuexi/
+nova-nursery/
 ├── index.html                               ← XX 官網（英文版、已上線）
 ├── vi/                                      ← 越南文版官網（已上線）
 │   ├── index.html                           ← 越南文首頁
@@ -137,10 +148,10 @@ xuanxuexi/
 ├── gemini-downloads/                        ← Gemini 下載產物
 │
 ├── CLAUDE.md / PROJECT.md / TODO.md / CHANGELOG.md / README.md
-└── XuanXuexi_emoji.png                      ← XX 品牌 Emoji
+└── NovaNursery_emoji.png                    ← XX 品牌 Emoji
 ```
 
-> LL 宇宙層級戰略文件（`LL_Universe_MasterPlan_v1.md` 等 5 份）已於 2026-07-26 搬離本專案至 `matrix-manager/inbox/`——這些文件跟 xuanxuexi 對外品牌內容無關，留在會被部署的目錄裡是外流風險。
+> LL 宇宙層級戰略文件（`LL_Universe_MasterPlan_v1.md` 等 5 份）已於 2026-07-26 搬離本專案至 `matrix-manager/inbox/`——這些文件跟 Nova Nursery 對外品牌內容無關，留在會被部署的目錄裡是外流風險。
 
 ---
 
@@ -182,9 +193,9 @@ xuanxuexi/
 
 - **語言**：純 HTML/CSS/JS（無框架、無 build）
 - **工具腳本**：Python（Neocities 下載、Playwright）
-- **部署**：Cloudflare Pages，已上線 `xuanxuexi.leaflune.org`（英文版 + `/vi` 越南文版）
-  - `wrangler pages deploy . --project-name=xuanxuexi --branch=master`
-  - **⚠️ 絕不可對 repo 根目錄直接跑 `wrangler pages deploy .`**——根目錄過去混有 LL 內部文件與 25MB+ 大型素材檔，會導致外流與部署卡關。固定流程：複製 `index.html` / `Card/` / `vi/` 到乾淨的暫存資料夾（例：`C:\Users\USER\_xuanxuexi_deploy`）再部署，部署完刪除暫存資料夾
+- **部署**：Cloudflare Pages，已上線 `novanursery.leaflune.org`（暫定網域，待確認實際部署網址，英文版 + `/vi` 越南文版）
+  - `wrangler pages deploy . --project-name=nova-nursery --branch=master`
+  - **⚠️ 絕不可對 repo 根目錄直接跑 `wrangler pages deploy .`**——根目錄過去混有 LL 內部文件與 25MB+ 大型素材檔，會導致外流與部署卡關。固定流程：複製 `index.html` / `Card/` / `vi/` 到乾淨的暫存資料夾（例：`C:\Users\USER\_nova-nursery_deploy`）再部署，部署完刪除暫存資料夾
 - **卡牌印刷規格**：CMYK 300dpi PDF、出血 3mm
 - **越南文支援**：已上線（`vi/` 資料夾，字體用 Google Fonts「Be Vietnam Pro」確保聲調符號正確渲染，女友協助翻譯與校對）
 
@@ -208,7 +219,7 @@ xuanxuexi/
 - TOCFL 教材生成工具（`tocfl-material-gen/`）功能完整但目前非主力，暫不擴充
 - ✅ 舊規劃 .md 已於 2026-07-26 歸檔進 `notes/`（見 §7、§13）
 - **部署安全**：repo 根目錄含大型素材檔（HSK 大綱 PDF、越南文教材 PDF/PPTX，最大 32MB+）與 `tocfl_bank/`（554 檔）。CF Pages 單檔 25MiB 上限，且直接部署根目錄有內部文件外流風險——務必走 §9 的乾淨資料夾部署流程
-- Sentence Summoner 已在 strategy-space.leaflune.org 上線，但 xuanxuexi 本地 `notes/` 內的規格文件是否為最新版本、跟上線版是否一致，尚未核對
+- Sentence Summoner 已在 strategy-space.leaflune.org 上線，但本專案本地 `notes/` 內的規格文件是否為最新版本、跟上線版是否一致，尚未核對
 
 ---
 
